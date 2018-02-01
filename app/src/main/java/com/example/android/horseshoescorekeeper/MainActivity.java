@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Displays WINNER for the Red Team if they score 15 or more points first
-     */
+     *
     public void displayWinnerRed(String winnerRed) {
         TextView winnerRedTextView = (TextView) findViewById(R.id.redTeamWin);
         winnerRedTextView.setText(String.valueOf(winnerRed));
@@ -26,16 +26,37 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Displays WINNER for the Blue Team if they score 15 or more points first
-     */
+     *
     public void displayWinnerBlue(String winnerBlue) {
         TextView winnerBlueTextView = (TextView) findViewById(R.id.blueTeamWin);
         winnerBlueTextView.setText(String.valueOf(winnerBlue));
+    }*/
+
+    /**
+     * Updated method to go from two methods to one when determining the winner
+     * @param winnerRed if red team wins
+     * @param winnerBlue if blue team wins
+     */
+
+    public void displayWinner(String winnerRed, String winnerBlue){
+        if (winnerRed == "WINNER"){
+            TextView winnerRedTextView = findViewById(R.id.redTeamWin);
+            winnerRedTextView.setText(String.valueOf(winnerRed));
+        }
+
+        else if(winnerBlue == "WINNER"){
+            TextView winnerBlueTextView = findViewById(R.id.blueTeamWin);
+            winnerBlueTextView.setText(String.valueOf(winnerBlue));
+        }
+
+        else;
+
     }
 
     /**
      * Displays the given score for the Red Team.
      */
-    public void displayForTeamA(int score) {
+    public void displayForRedTeam(int score) {
         TextView scoreView = (TextView) findViewById(R.id.red_team_score);
         scoreView.setText(String.valueOf(score));
 
@@ -43,8 +64,9 @@ public class MainActivity extends AppCompatActivity {
          * Check to see if the Red team has 15 or more point for the win
          */
         if (redTeamScore >= 15) {
-            displayWinnerRed("WINNER");
+            displayWinner("WINNER", " ");
         }
+
     }
 
     /**
@@ -52,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void ringerForRedTeam(View view) {
         redTeamScore = redTeamScore + 3;
-        displayForTeamA(redTeamScore);
+        displayForRedTeam(redTeamScore);
     }
 
     /**
@@ -60,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void leanerForRedTeam(View view) {
         redTeamScore = redTeamScore + 2;
-        displayForTeamA(redTeamScore);
+        displayForRedTeam(redTeamScore);
     }
 
     /**
@@ -68,14 +90,14 @@ public class MainActivity extends AppCompatActivity {
      */
     public void closestToPinRedTeam(View view) {
         redTeamScore = redTeamScore + 1;
-        displayForTeamA(redTeamScore);
+        displayForRedTeam(redTeamScore);
     }
 
 
     /**
      * Displays the given score for the Blue Team.
      */
-    public void displayForTeamB(int score) {
+    public void displayForBlueTeam(int score) {
         TextView scoreView = (TextView) findViewById(R.id.blue_team_score);
         scoreView.setText(String.valueOf(score));
 
@@ -83,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
          * Check to see if the Blue team has 15 or more point for the win
          */
         if (blueTeamScore >= 15) {
-            displayWinnerBlue("WINNER");
+            displayWinner(" ", "WINNER");
         }
     }
 
@@ -92,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void ringerForBlueTeam(View view) {
         blueTeamScore = blueTeamScore + 3;
-        displayForTeamB(blueTeamScore);
+        displayForBlueTeam(blueTeamScore);
     }
 
     /**
@@ -100,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void leanerForBlueTeam(View view) {
         blueTeamScore = blueTeamScore + 2;
-        displayForTeamB(blueTeamScore);
+        displayForBlueTeam(blueTeamScore);
     }
 
     /**
@@ -108,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void closestToPinBlueTeam(View view) {
         blueTeamScore = blueTeamScore + 1;
-        displayForTeamB(blueTeamScore);
+        displayForBlueTeam(blueTeamScore);
     }
 
     /**
@@ -117,9 +139,12 @@ public class MainActivity extends AppCompatActivity {
     public void resetScores(View view) {
         redTeamScore = 0;
         blueTeamScore = 0;
-        displayForTeamA(redTeamScore);
-        displayForTeamB(blueTeamScore);
-        displayWinnerRed("");
-        displayWinnerBlue("");
+        displayForRedTeam(redTeamScore);
+        displayForBlueTeam(blueTeamScore);
+        /**displayWinnerRed("");
+        displayWinnerBlue("");*/
+        String winnerRed = " ";
+        String winnerBlue = " ";
+        displayWinner(" ", " ");
     }
 }
