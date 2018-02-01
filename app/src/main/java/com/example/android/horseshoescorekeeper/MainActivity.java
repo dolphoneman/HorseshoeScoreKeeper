@@ -134,17 +134,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Reset the scores back to zero
+     * Reset the scores back to zero and clear the Winner value
      */
     public void resetScores(View view) {
         redTeamScore = 0;
         blueTeamScore = 0;
         displayForRedTeam(redTeamScore);
         displayForBlueTeam(blueTeamScore);
-        /**displayWinnerRed("");
-        displayWinnerBlue("");*/
-        String winnerRed = " ";
-        String winnerBlue = " ";
-        displayWinner(" ", " ");
+        TextView winnerRedTextView = findViewById(R.id.redTeamWin);
+        winnerRedTextView.setText(String.valueOf(" "));
+        TextView winnerBlueTextView = findViewById(R.id.blueTeamWin);
+        winnerBlueTextView.setText(String.valueOf(" "));
+
     }
 }
