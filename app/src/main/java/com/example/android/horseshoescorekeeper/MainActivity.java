@@ -10,10 +10,12 @@ public class MainActivity extends AppCompatActivity {
     int redTeamScore = 0;
     int blueTeamScore = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     /**
@@ -24,45 +26,43 @@ public class MainActivity extends AppCompatActivity {
         winnerRedTextView.setText(String.valueOf(winnerRed));
     }
 
-    /**
+
      * Displays WINNER for the Blue Team if they score 15 or more points first
      *
     public void displayWinnerBlue(String winnerBlue) {
         TextView winnerBlueTextView = (TextView) findViewById(R.id.blueTeamWin);
         winnerBlueTextView.setText(String.valueOf(winnerBlue));
-    }*/
+    }
 
-    /**
+
      * Updated method to go from two methods to one when determining the winner
      * @param winnerRed if red team wins
      * @param winnerBlue if blue team wins
      */
 
     public void displayWinner(String winnerRed, String winnerBlue){
-        if (winnerRed == "WINNER"){
+        if (winnerRed.equals("WINNER")){
             TextView winnerRedTextView = findViewById(R.id.redTeamWin);
             winnerRedTextView.setText(String.valueOf(winnerRed));
         }
 
-        else if(winnerBlue == "WINNER"){
-            TextView winnerBlueTextView = findViewById(R.id.blueTeamWin);
-            winnerBlueTextView.setText(String.valueOf(winnerBlue));
+        else {
+            if (winnerBlue.equals("WINNER")) {
+                TextView winnerBlueTextView = findViewById(R.id.blueTeamWin);
+                winnerBlueTextView.setText(String.valueOf(winnerBlue));}
         }
 
-        else;
 
     }
 
     /**
      * Displays the given score for the Red Team.
+     * Check to see if the Red team has 15 or more point for the win.
      */
     public void displayForRedTeam(int score) {
-        TextView scoreView = (TextView) findViewById(R.id.red_team_score);
+        TextView scoreView = findViewById(R.id.red_team_score);
         scoreView.setText(String.valueOf(score));
 
-        /**
-         * Check to see if the Red team has 15 or more point for the win
-         */
         if (redTeamScore >= 15) {
             displayWinner("WINNER", " ");
         }
@@ -96,14 +96,12 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Displays the given score for the Blue Team.
+     * Check to see if the Blue team has 15 or more point for the win.
      */
     public void displayForBlueTeam(int score) {
-        TextView scoreView = (TextView) findViewById(R.id.blue_team_score);
+        TextView scoreView = findViewById(R.id.blue_team_score);
         scoreView.setText(String.valueOf(score));
 
-        /**
-         * Check to see if the Blue team has 15 or more point for the win
-         */
         if (blueTeamScore >= 15) {
             displayWinner(" ", "WINNER");
         }
